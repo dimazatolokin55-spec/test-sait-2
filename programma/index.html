@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Кафе "Выжившие"</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+  <header>
+    <h1>Кафе "Выжившие"</h1>
+    <nav>
+      <button onclick="showTab('home')">Главная</button>
+      <button onclick="showTab('menu')">Меню</button>
+      <button onclick="showTab('cart')">Корзина</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Главная -->
+    <section id="home" class="tab">
+      <h2>Наш персонал</h2>
+
+      <!-- Слайдер -->
+      <div class="slider-container">
+        <img id="person-img" src="person1.jpg" alt="Сотрудник">
+        <div class="slider-buttons">
+          <button onclick="prevPerson()">⟵</button>
+          <button onclick="nextPerson()">⟶</button>
+        </div>
+      </div>
+
+      <div id="person-text">
+        <p>Это Иван — всегда встречает гостей с улыбкой и помогает создать уютную атмосферу.</p>
+      </div>
+    </section>
+
+    <!-- Меню -->
+    <section id="menu" class="tab" style="display:none;">
+      <h2>Меню</h2>
+      <div class="dish">
+        <img src="borsch.jpg" alt="Борщ">
+        <p>Борщ — 80 грн</p>
+        <button onclick="addToCart('Борщ', 80, 'borsch.jpg')">Добавить</button>
+      </div>
+      <div class="dish">
+        <img src="vareniki.jpg" alt="Вареники">
+        <p>Вареники — 60 грн</p>
+        <button onclick="addToCart('Вареники', 60, 'vareniki.jpg')">Добавить</button>
+      </div>
+    </section>
+
+    <!-- Корзина -->
+    <section id="cart" class="tab" style="display:none;">
+      <h2>Корзина</h2>
+      <ul id="cart-items"></ul>
+      <p id="total">Итого: 0 грн</p>
+
+      <!-- Кнопка LiqPay -->
+      <form method="POST" action="https://www.liqpay.ua/api/3/checkout" accept-charset="utf-8">
+          <input type="hidden" name="data" value="ТВОЙ_DATA">
+          <input type="hidden" name="signature" value="ТВОЯ_SIGNATURE">
+          <button type="submit">Оплатить через Google Pay / Apple Pay</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <marquee>Добро пожаловать в ретро‑кафе!</marquee>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
